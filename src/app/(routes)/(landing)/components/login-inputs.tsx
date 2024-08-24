@@ -2,16 +2,37 @@
 
 import { Input } from "@/components/ui/input";
 import * as React from "react";
-import { useRouter } from "next/navigation";
 import useLogin from "@/hooks/use-signin";
+import { useRouter } from "next/navigation";
 
 export const LoginInput = () => {
-    const { email, password, handleEmailChange, handlePasswordChange } = useLogin();
-
+    const { email, password, handleEmailChange, handlePasswordChange, login } = useLogin();
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState<string | null>(null);
     const router = useRouter();
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
+
+        setLoading(true);
+        setError(null);
+
+        login()
+            .then((response) => {
+                if (response) {
+                    console.log("Login successful");
+                    router.push("/home");
+                } else {
+                    setError("Login failed. Please check your credentials.");
+                }
+            })
+            .catch((err) => {
+                console.error("Login failed", err);
+                setError("An unexpected error occurred.");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (
@@ -33,10 +54,11 @@ export const LoginInput = () => {
             <button
                 type="submit"
                 className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                disabled={loading}
             >
-                Sign In
+                {loading ? "Signing in..." : "Sign In"}
             </button>
+            {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
-
     );
 };
