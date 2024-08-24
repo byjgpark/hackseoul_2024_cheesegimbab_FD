@@ -31,8 +31,8 @@ interface ApiRequest {
 }
 
 const Page = () => {
-    const [region, setRegion] = useState("서울"); // Default region
-    const [budget, setBudget] = useState(1000000); // Default budget
+    const [region, setRegion] = useState("서울");
+    const [budget, setBudget] = useState(1000000);
 
     const [hallPer, setHallPer] = useState(0);
     const [studioPer, setStudioPer] = useState(0);
@@ -45,25 +45,25 @@ const Page = () => {
 
     const handleSubmit = async () => {
         const request: ApiRequest = {
-            member_seq: 1, // Example member sequence
+            member_seq: 1,
             region,
             budget,
             hall: hallPer > 0,
-            hall_per: hallPer,
+            hall_per: hallPer / 100,
             studio: studioPer > 0,
-            studio_per: studioPer,
+            studio_per: studioPer / 100,
             dress: dressPer > 0,
-            dress_per: dressPer,
+            dress_per: dressPer / 100,
             make_up: makeUpPer > 0,
-            make_up_per: makeUpPer,
+            make_up_per: makeUpPer / 100,
             gift: giftPer > 0,
-            gift_per: giftPer,
+            gift_per: giftPer / 100,
             dowry: dowryPer > 0,
-            dowry_per: dowryPer,
+            dowry_per: dowryPer / 100,
             parent_make_up: parentMakeUpPer > 0,
-            parent_make_up_per: parentMakeUpPer,
+            parent_make_up_per: parentMakeUpPer / 100,
             parent_dress: parentDressPer > 0,
-            parent_dress_per: parentDressPer,
+            parent_dress_per: parentDressPer / 100,
         };
 
         try {
