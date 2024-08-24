@@ -64,6 +64,8 @@ export function CheckboxReactHookFormMultiple() {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
 
+    
+
     console.log("data", data);
 
     toast({
