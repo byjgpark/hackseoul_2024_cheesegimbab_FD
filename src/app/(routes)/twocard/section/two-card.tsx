@@ -1,7 +1,7 @@
 "use client";
 
 import {useEffect, useState} from "react";
-import chatApi from "@/api/solutionApi";
+import chatApi from "@/api/twoCardApi";
 import BackButton from "@/components/ui/back-button"; // Ensure chatApi is exported as default in testApi
 
 interface SolutionMessage {
