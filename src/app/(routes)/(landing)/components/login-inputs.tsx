@@ -1,10 +1,10 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
+import {Input} from "@/components/ui/input";
 import * as React from "react";
 import useLogin from "@/hooks/use-signin";
-import { useRouter } from "next/navigation";
-import { useAuth } from "../../../authContext";
+import {useRouter} from "next/navigation";
+import {useAuth} from "../../../authContext";
 
 interface LoginInputProps {
     children?: React.ReactNode;

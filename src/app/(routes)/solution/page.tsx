@@ -9,17 +9,25 @@ import {useEffect} from "react";
 import solution from "@/api/solution";
 
 interface ApiRequest {
-  "member_seq": number,
-  "region": string,
-  "budget": number,
-  "hall": boolean,
-  "studio": boolean,
-  "dress": boolean,
-  "make_up": boolean,
-  "gift": boolean,
-  "dowry": boolean,
-  "parent_make_up": boolean,
-  "parent_dress": boolean,
+    member_seq: number;
+    region: string;
+    budget: number;
+    hall: boolean;
+    hall_per: number;
+    studio: boolean;
+    studio_per: number;
+    dress: boolean;
+    dress_per: number;
+    make_up: boolean;
+    make_up_per: number;
+    gift: boolean;
+    gift_per: number;
+    dowry: boolean;
+    dowry_per: number;
+    parent_make_up: boolean;
+    parent_make_up_per: number;
+    parent_dress: boolean;
+    parent_dress_per: number;
 }
 
 const Page = () => {
@@ -33,17 +41,25 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const res: ApiRequest = {
-            "member_seq": 1,
-            "region": "서울",
-            "budget": 1000000,
-            "hall": true,
-            "studio": true,
-            "dress": true,
-            "make_up": true,
-            "gift": true,
-            "dowry": true,
-            "parent_make_up": true,
-            "parent_dress": true,
+            member_seq: 1,
+            region: "서울",
+            budget: 1000000,
+            hall: true,
+            hall_per: 0,
+            studio: true,
+            studio_per: 0,
+            dress: true,
+            dress_per: 0,
+            make_up: true,
+            make_up_per: 0,
+            gift: true,
+            gift_per: 0,
+            dowry: true,
+            dowry_per: 0,
+            parent_make_up: true,
+            parent_make_up_per: 0,
+            parent_dress: true,
+            parent_dress_per: 0
         };
 
         const response = await solution(res);
