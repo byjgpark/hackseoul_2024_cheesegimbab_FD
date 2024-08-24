@@ -1,20 +1,25 @@
-// import { cn } from "@/lib/utils";
-// interface HeaderProps extends HTMLAttributes<HTMLDivElement> {}
+import { InputHTMLAttributes } from "react";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { HTMLAttributes } from 'react'
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-interface LabelInputProps extends HTMLAttributes<HTMLDivElement>{
-    type: string; 
-    placeholder: string;
+interface LabelInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    label: string;
+    onValueChange?: (value: string) => void; // Custom handler that passes a string value
 }
 
-export const LabelInput = ({className, children, ...props}: LabelInputProps) => {
-  return (
-    <div className={cn("grid w-1/2 items-center", className)}>
-      {/* <Label htmlFor={`${children}`}>{children}</Label> */}
-      <Input type={props.type} id="email" placeholder={`${props.placeholder}`} />
-    </div>
-  );
+export const LabelInput = ({
+                               className,
+                               label,
+                               onValueChange,
+                               ...props
+                           }: LabelInputProps) => {
+    return (
+        <div className={cn("grid w-1/2 items-center", className)}>
+            <label className="block text-sm font-medium text-gray-700">{label}</label>
+            <Input
+                {...props}
+                onChange={(e) => onValueChange && onValueChange(e.target.value)}
+            />
+        </div>
+    );
 };

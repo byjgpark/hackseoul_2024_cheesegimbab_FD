@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
@@ -24,22 +22,22 @@ interface Framework {
   district_list: string[];
 }
 
-export function ComboboxDemo() {
+interface ComboboxDemoProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+export function ComboboxDemo({ value, onChange }: ComboboxDemoProps) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<string>("");
   const [frameworks, setFrameworks] = useState<Framework | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await addressApi(); // Use the imported function
-
-        console.log("API response:", response);
+        const response = await addressApi();
 
         if (response && response.district_list) {
           setFrameworks(response);
-        } else {
-          console.error("Unexpected response format:", response);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -56,10 +54,11 @@ export function ComboboxDemo() {
               variant="outline"
               role="combobox"
               aria-expanded={open}
-              className="w-1/2 justify-between"
+              className="w-full justify-between"
           >
             {value
-                ? frameworks?.district_list.find((district) => district === value) || "사시는 구"
+                ? frameworks?.district_list.find((district) => district === value) ||
+                "사시는 구"
                 : "사시는 구"}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
@@ -77,7 +76,7 @@ export function ComboboxDemo() {
                             key={district}
                             value={district}
                             onSelect={(currentValue) => {
-                              setValue(currentValue === value ? "" : currentValue);
+                              onChange(currentValue);
                               setOpen(false);
                             }}
                         >
