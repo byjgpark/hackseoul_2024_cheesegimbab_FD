@@ -30,11 +30,7 @@ export function TwoCard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = {
-                    status: (statusCode: number) => ({
-                        json: (data: any) => data,
-                    }),
-                };
+
                 const response = await chatApi(req);
 
                 setSolutionMessage(response);

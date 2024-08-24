@@ -28,7 +28,7 @@ interface ListItem {
     React.useEffect(() => {
       const fetchData = async () => {
         try {
-          const response: ApiResponse = await listApi(1);
+          const response: ApiResponse = await listApi(parseInt(memberSeq));
           console.log("Response data: listApi", response);
           if (response && response.weddingListList) {
             console.log("Response data: listApi", response.weddingListList);

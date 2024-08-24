@@ -21,14 +21,14 @@ interface ApiRequest {
 }
 
 
-export default async function chatApi(
+export default async function solution(
     req: ApiRequest) {
 
     try {
 
         console.log("API request:", req);
 
-        const url = new URL('http://172.18.2.221:8080/api/v1/ai-recommendation');
+        const url = new URL('http://localhost:8080/api/v1/ai-recommendation');
 
         const response = await fetch(url.toString(), {
             method: 'POST',
@@ -37,14 +37,14 @@ export default async function chatApi(
             },
             body: JSON.stringify(req),
         });
-
+        console.log("iftetsss");
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
 
-
+        return data;
     } catch (error) {
         console.error('Error fetching AI response:', error);
     }

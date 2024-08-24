@@ -6,15 +6,9 @@ import { ComboboxDemo } from "@/components/ui/combobox";
 import BackButton from "@/components/ui/back-button";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
+import {useAuth} from "@/app/authContext";
+import { useRouter } from "next/navigation";
 import solution from "@/api/solution";
-
-
-import {useRouter} from 'next/navigation'
-// import { useHistory } from "react-router-dom";
-import {zodResolver} from "@hookform/resolvers/zod"
-import {useForm} from "react-hook-form"
-import {z} from "zod"
-import {toast} from "@/components/ui/use-toast"
 
 interface ApiRequest {
     member_seq: number;
@@ -38,38 +32,11 @@ interface ApiRequest {
     parent_dress_per: number;
 }
 
-interface Framework {
-  district_list: string[];
-}
-
-const items = [
-  {
-    id: "hall",
-    label: "웨딩홀",
-  },
-  {
-    id: "studio",
-    label: "스튜디오",
-  },
-  {
-    id: "dress",
-    label: "드레스",
-  },
-  {
-    id: "makeup",
-    label: "메이크업",
-  },
-  {
-    id: "drowry",
-    label: "예물",
-  }
-] as const
-
-const FormSchema = z.object({
-  items: z.array(z.string()),
-})
-
 const Page = () => {
+
+    const { memberSeq } = useAuth();
+
+    const router = useRouter();
 
     const [region, setRegion] = useState("서울");
     const [budget, setBudget] = useState(1000000);
@@ -87,7 +54,7 @@ const Page = () => {
 
     const handleSubmit = async () => {
         const request: ApiRequest = {
-            member_seq: 1,
+            member_seq: parseInt(memberSeq),
             region,
             budget,
             hall: hallPer > 0,
@@ -111,6 +78,9 @@ const Page = () => {
         try {
             const response = await solution(request);
             console.log("API response:", response);
+
+            router.push("/home");
+
         } catch (error) {
             console.error("Error submitting data:", error);
         }
