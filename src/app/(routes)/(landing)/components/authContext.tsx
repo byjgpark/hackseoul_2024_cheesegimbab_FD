@@ -5,8 +5,8 @@ interface AuthContextProps {
     password: string;
     handleEmailChange: (email: string) => void;
     handlePasswordChange: (password: string) => void;
-    setEmail: (email: string) => void; // 추가
-    setPassword: (password: string) => void; // 추가
+    setEmail: (email: string) => void;
+    setPassword: (password: string) => void;
 }
 
 const AuthContext = React.createContext<AuthContextProps | undefined>(undefined);

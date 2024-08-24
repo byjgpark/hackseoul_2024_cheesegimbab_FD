@@ -15,7 +15,6 @@ const Page = async () => {
                     </h2>
                     <div className="space-y-4">
                         <LoginInput/>
-                        <LoginButton/>
                     </div>
                 </div>
             </main>

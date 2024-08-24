@@ -12,12 +12,20 @@ interface ApiResponse {
 }
 
 function useLogin() {
-    const { email, password } = useAuth();
+    const { email, password, setEmail, setPassword } = useAuth();
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const login = async (email: string, password: string): Promise<ApiResponse | null> => {
+    const handleEmailChange = (email: string) => {
+        setEmail(email);
+    };
+
+    const handlePasswordChange = (password: string) => {
+        setPassword(password);
+    };
+
+    const login = async (): Promise<ApiResponse | null> => {
         setLoading(true);
         setError(null);
 
@@ -31,8 +39,7 @@ function useLogin() {
 
             console.log("API response:", response);
 
-            // 성공 처리
-            setLoading(false);
+            setLoading(false); // 성공 처리
             return response;
         } catch (err) {
             console.error('Login failed:', err);
@@ -47,6 +54,8 @@ function useLogin() {
         password,
         loading,
         error,
+        handleEmailChange,
+        handlePasswordChange,
         login,
     };
 }
