@@ -2,11 +2,9 @@
 
 import * as React from "react";
 import {LoginInput} from "./components/login-inputs";
-import {AuthProvider} from "./components/authContext";
 
 const Page = async () => {
     return (
-        <AuthProvider>
             <main className="flex items-center justify-center h-screen px-4">
                 <div className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
                     <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
@@ -17,7 +15,6 @@ const Page = async () => {
                     </div>
                 </div>
             </main>
-        </AuthProvider>
     );
 };
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import loginUser from '@/api/authApi';
-import { useAuth } from "../app/(routes)/(landing)/components/authContext";
+import { useAuth } from "../app/authContext";
 
 interface MemberApiRequest {
     member_id: string;
@@ -8,11 +8,12 @@ interface MemberApiRequest {
 }
 
 interface ApiResponse {
-    data: any;
+    code: string;
+    member_seq: number;
 }
 
 function useLogin() {
-    const { email, password, setEmail, setPassword } = useAuth();
+    const { email, password, setEmail, setPassword, setMemberSeq } = useAuth();
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -39,7 +40,14 @@ function useLogin() {
 
             console.log("API response:", response);
 
-            setLoading(false); // 성공 처리
+            if (response && response.code === '0000') {
+                setMemberSeq(response.member_seq.toString());
+            } else {
+                setError('Login failed. Invalid response from the server.');
+                return null;
+            }
+
+            setLoading(false);
             return response;
         } catch (err) {
             console.error('Login failed:', err);

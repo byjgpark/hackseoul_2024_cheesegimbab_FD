@@ -4,11 +4,15 @@ import { Input } from "@/components/ui/input";
 import * as React from "react";
 import useLogin from "@/hooks/use-signin";
 import { useRouter } from "next/navigation";
-import { useAuth } from "./authContext";
+import { useAuth } from "../../../authContext";
 
-export const LoginInput = () => {
+interface LoginInputProps {
+    children?: React.ReactNode;
+}
+
+export const LoginInput = ({ children }: LoginInputProps) => {
     const { email, password, handleEmailChange, handlePasswordChange, login } = useLogin();
-    const { setEmail, setPassword, setMemberSeq } = useAuth(); // 수정된 부분
+    const { setEmail, setPassword, setMemberSeq } = useAuth();
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
     const router = useRouter();
@@ -23,10 +27,9 @@ export const LoginInput = () => {
             .then((response) => {
                 if (response) {
                     console.log("Login successful");
-                    // 로그인 성공 시 상태 업데이트
                     setEmail(email);
                     setPassword(password);
-                    setMemberSeq(response.data?.member_seq);
+                    setMemberSeq(response?.member_seq.toString());
                     router.push("/home");
                 } else {
                     setError("Login failed. Please check your credentials.");

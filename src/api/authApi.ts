@@ -1,5 +1,6 @@
 interface ApiResponse {
-  data: any;
+  code: string;
+  member_seq: number;
 }
 
 interface MemberApiRequest {
