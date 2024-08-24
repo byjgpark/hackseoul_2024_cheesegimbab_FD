@@ -73,14 +73,14 @@ const First: React.FC<FirstProps> = ({ prop }) => {
 
   console.log("First props", prop);
 
-  const handleClick = () => {
-    router.push(`../../twocard`);
+  const handleClick = (prop: number) => {
+    router.push(`/home/${prop}`);
   }
 
   return (
     <div className="w-full max-w-3xl mx-auto p-4 space-y-4">
       {prop.map((item) => (
-        <Card key={item.id} onClick={() => handleClick()} className="cursor-pointer hover:shadow-lg transition-shadow">
+        <Card key={item.id} onClick={() => handleClick(item.id)} className="cursor-pointer hover:shadow-lg transition-shadow">
           <CardHeader>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>ID: {item.id}</CardDescription>

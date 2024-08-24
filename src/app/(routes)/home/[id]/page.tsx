@@ -1,30 +1,25 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from 'react';
+import { redirect } from "next/navigation";
 import TwoCard from "../../twocard/section/two-card";
 
-const BlogPost: React.FC = () => {
-  const router = useRouter();
-  const [id, setId] = useState<string | undefined>(undefined);
+interface Props {
+  params: {
+    id: string;
+  };
+}
 
-  useEffect(() => {
-    if (router.query.id) {
-      setId(router.query.id as string);
-    }
-  }, [router.query]);
+const Page = async ({ params: { id } }: Props) => {
 
-  console.log("check id", id);
+    console.log("check id", id);
   
-  if (!id) {
-    return <div>Loading...</div>; // Optionally render a loading state while waiting for the id
-  }
-
   return (
     <main>
-      <TwoCard />
+      {/* <div className="flex justify-center">{renderProcess()}</div> */}
+      {/* <div className="flex justify-center">this is selected page</div> */}
+      <TwoCard prop={id}></TwoCard>
     </main>
   );
 };
 
-export default BlogPost;
+export default Page;

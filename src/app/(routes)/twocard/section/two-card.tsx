@@ -1,8 +1,10 @@
 "use client";
 
 import {useEffect, useState} from "react";
+import { useRouter } from 'next/router';
 import chatApi from "@/api/twoCardApi";
 import BackButton from "@/components/ui/back-button"; // Ensure chatApi is exported as default in testApi
+import detailApi from "@/api/detailApi";
 
 interface SolutionMessage {
     basic: {
@@ -17,9 +19,13 @@ interface SolutionMessage {
     };
 }
 
-export function TwoCard() {
+export function TwoCard(id: any) {
 
-    const[solutionMessage, setSolutionMessage] = useState<SolutionMessage>();
+console.log("check id", id)
+
+// const router = useRouter();
+    // console.log("check router", router.query.id);
+
 
     const req = {
         query: {
@@ -30,14 +36,12 @@ export function TwoCard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = {
-                    status: (statusCode: number) => ({
-                        json: (data: any) => data,
-                    }),
-                };
-                const response = await chatApi(req);
+                
+                const response = await detailApi(id);
 
-                setSolutionMessage(response);
+                console.log("check response", response);
+
+                // setSolutionMessage(response);
 
                 console.log("API response:", response);
             } catch (error) {
@@ -58,12 +62,32 @@ export function TwoCard() {
                     {/* Basic Plan */}
                     <div className="w-72 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white flex flex-col justify-between">
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.basic?.title}</h2>
-                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.basic?.price}</p>
+                            {/* <h2 className="text-xl font-bold mb-4 text-gray-800">123123</h2> */}
+                            <p className="text-4xl font-bold mb-6 text-gray-900">Basic</p>
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">{solutionMessage?.basic?.solution}</span>
+                                    <span className="ml-2 text-gray-700">웨딩홀 2000만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">웨딩드레스 300만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">스튜디오 촬영 200만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">메이크업 헤어 100만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">뷔페 1,500만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">기타 500만원</span>
                                 </li>
                             </ul>
                         </div>
@@ -75,12 +99,32 @@ export function TwoCard() {
                     {/* Premium Plan */}
                     <div className="w-72 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white flex flex-col justify-between">
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.premium?.title}</h2>
-                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.premium?.price}</p>
+                            {/* <h2 className="text-xl font-bold mb-4 text-gray-800">Plan</h2> */}
+                            <p className="text-4xl font-bold mb-6 text-gray-900">Premium</p>
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">{solutionMessage?.premium?.solution}</span>
+                                    <span className="ml-2 text-gray-700">웨딩홀 3,000만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">웨딩드레스 600만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">스튜디오 촬영 900만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">메이크업 및 헤어 400만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">뷔페 1,500만원</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">기타 1,000만원</span>
                                 </li>
                             </ul>
                         </div>

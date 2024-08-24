@@ -1,3 +1,5 @@
+'use client';
+
 import { redirect } from "next/navigation";
 import TwoCard from "./section/two-card";
 
@@ -13,7 +15,7 @@ const Page = async ({ params: { process } }: Props) => {
     <main>
       {/* <div className="flex justify-center">{renderProcess()}</div> */}
       {/* <div className="flex justify-center">this is selected page</div> */}
-      {/* <TwoCard></TwoCard> */}
+      <TwoCard></TwoCard>
     </main>
   );
 };
