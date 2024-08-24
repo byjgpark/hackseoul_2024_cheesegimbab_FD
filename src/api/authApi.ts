@@ -10,7 +10,10 @@ interface MemberApiRequest {
 
 export default async function loginUser(req: MemberApiRequest): Promise<ApiResponse | null> {
   try {
-    const url = 'http://172.18.8.126:8080/api/v1/member-login';
+    const url = 'http://172.18.2.221:8080/api/v1/member-login';
+    
+    console.log("check req", req)
+
 
     const options = {
       method: 'POST',
@@ -21,6 +24,8 @@ export default async function loginUser(req: MemberApiRequest): Promise<ApiRespo
     };
 
     const response = await fetch(url, options);
+
+    console.log("Check res",response)
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

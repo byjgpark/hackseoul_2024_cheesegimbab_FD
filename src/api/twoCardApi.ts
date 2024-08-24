@@ -26,7 +26,7 @@ export default async function chatApi(
 
   try {
 
-    const url = new URL('http://localhost:8080/api/v1/ai-generate');
+    const url = new URL('http://172.18.2.221:8080/api/v1/ai-generate');
 
     url.searchParams.append('promptMessage', promptMessage);
 

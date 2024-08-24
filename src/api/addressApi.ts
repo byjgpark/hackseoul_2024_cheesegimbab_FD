@@ -4,7 +4,7 @@ interface ApiResponse {
 
 export default async function addressApi() {
     try {
-        const url = new URL('http://localhost:8080/api/v1/gu-info');
+        const url = new URL('http://172.18.2.221:8080/api/v1/gu-info');
         const response = await fetch(url);
 
         if (!response.ok) {

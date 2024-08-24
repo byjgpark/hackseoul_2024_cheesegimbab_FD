@@ -3,6 +3,7 @@
 import React from "react";
 import First from "./sections/first";
 import { useAuth } from "@/app/authContext";
+import listApi from "@/api/listApi";
 
 interface Props {
     params: {
@@ -10,25 +11,47 @@ interface Props {
     };
 }
 
-const Page = () => {
-
-    const { memberSeq } = useAuth(); // AuthContext에서 memberSeq를 가져옵니다.
-
-    
-
+interface ListItem {
+    id: number;
+    title: string;
+    subTitle: string;
+  }
+  
+  interface ApiResponse {
+    weddingListList: ListItem[];
+  }
+  
+  const Page: React.FC<Props> = () => {
+    const { memberSeq } = useAuth();
+    const [listData, setListData] = React.useState<ListItem[]>([]);
+  
     React.useEffect(() => {
-        console.log("Member Seq:", memberSeq); // memberSeq의 값이 바뀔 때마다 콘솔에 출력합니다.
+      const fetchData = async () => {
+        try {
+          const response: ApiResponse = await listApi(1);
+          console.log("Response data: listApi", response);
+          if (response && response.weddingListList) {
+            console.log("Response data: listApi", response.weddingListList);
+            setListData(response.weddingListList); // Pass the array directly
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchData();
     }, [memberSeq]);
-
+  
     const renderProcess = () => {
-        return <First />;
+      return <First prop={listData}/>;
     };
-
+  
     return (
-        <main>
-            <div className="flex justify-center">{renderProcess()}</div>
-        </main>
+      <main>
+        <div className="flex justify-center">{renderProcess()}</div>
+      </main>
     );
-};
-
-export default Page;
+  };
+  
+  export default Page;
+  
