@@ -8,6 +8,7 @@ import { LabelInput } from "@/components/shared/label-input";
 import { Button } from "@/components/ui/button";
 import { CheckboxReactHookFormMultiple } from "@/components/ui/mutiple-checkbox";
 import { ComboboxDemo } from "@/components/ui/combobox";
+import BackButton from "@/components/ui/back-button";
 
 const Page = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -20,6 +21,7 @@ const Page = () => {
   return (
     <main>
       <div className="flex justify-center">
+        <BackButton/>
         {/* <div className="grid grid-cols-2 gap-1">
         <DropDown></DropDown>  
         <LabelInput type="text" placeholder="Buget"></LabelInput>
@@ -31,10 +33,10 @@ const Page = () => {
         </div>         */}
 
         <div className="grid grid-cols-1 gap-1">
-          
+
           <div className="flex flex-row w-full h-full">
             <div className="flex-1">
-              <ComboboxDemo />
+              <ComboboxDemo/>
             </div>
             <div className="flex-1">
               <LabelInput type="text" placeholder="예산">

@@ -1,17 +1,12 @@
 'use client'
 
 import * as React from "react";
-import Script from "next/script";
 import { Separator } from "@radix-ui/react-separator";
-import { useRouter, useSearchParams } from 'next/navigation'
-
-// import { CarouselCards } from "./sections/carousel-cards";
-
+import { useRouter } from 'next/navigation';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"; // 카드 컴포넌트를 import 합니다.
 
 const First = () => {
-
-  // const { naver } = window;
-  const router = useRouter()
+  const router = useRouter();
 
   const testData = [
     { id: 1, name: "John test 123 123 123123 123 " },
@@ -28,21 +23,27 @@ const First = () => {
   ];
 
   const handleClick = () => {
-    // how to fix Error: No router instance found. You should only use "next/router" on the client side of your app.
-  
     router.push(`/wedding/1/2`);
   }
 
   return (
-    <div className="w-1/2">
-
-      {testData.map((item) => (
-        <>
-        <div  key={item.id} onClick={() => handleClick()}>{item.name}</div>
-        <Separator key={item.id} className="border border-black border-1" orientation="vertical"></Separator>
-        </>
-      ))}
-    </div>
+      <div className="w-full max-w-3xl mx-auto p-4 space-y-4">
+        {testData.map((item) => (
+            <Card key={item.id} onClick={() => handleClick()} className="cursor-pointer hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>{item.name}</CardTitle>
+                <CardDescription>ID: {item.id}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Additional content can go here.</p>
+              </CardContent>
+              <CardFooter>
+                <span>Footer content</span>
+              </CardFooter>
+              <Separator className="mt-4" />
+            </Card>
+        ))}
+      </div>
   );
 };
 
