@@ -1,21 +1,20 @@
 "use client";
 
 import * as React from "react";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import useLogin  from "@/hooks/use-signin.tsx"; 
+import useLogin from "@/hooks/use-signin.tsx";
 
 export const LoginButton = () => {
+    const { login } = useLogin();
 
-
-  const { login } = useLogin();
-  
-  return (
-    <div className="flex justify-center">
-      <Link href="/">
-        <Button onClick={()=> login()}>Login</Button>
-      </Link>
-    </div>
-  );
+    return (
+        <div className="flex justify-center mt-4">
+            <Button
+                className="w-full md:w-auto bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                onClick={() => login()}
+            >
+                Login
+            </Button>
+        </div>
+    );
 };
