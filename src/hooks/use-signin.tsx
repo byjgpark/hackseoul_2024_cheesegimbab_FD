@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import loginUser from '@/api/authApi';
+// @/api/testApi
+
+// @/api/testApi
 
 function useLogin() {
     // State to hold email, password, and other user inputs
@@ -29,6 +33,14 @@ function useLogin() {
         try {
             // Assume you have an API function to handle login, e.g., `loginUser`
             // const response = await loginUser({ email, password });
+
+
+            console.log("check email", email, "password", password);
+            
+            // console.log("API response:", response);
+            const response = await loginUser({ "member_id": email, "member_pw": password });
+
+            console.log("API response:", response);
 
             console.log("check email", email, "password", password);
             
