@@ -26,7 +26,6 @@ console.log("check id", id)
 // const router = useRouter();
     // console.log("check router", router.query.id);
 
-
     const req = {
         query: {
             promptMessage: 'Hello, AI!',  // Example of a query parameter
@@ -38,6 +37,7 @@ console.log("check id", id)
             try {
                 
                 const response = await detailApi(id);
+
 
                 console.log("check response", response);
 

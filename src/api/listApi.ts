@@ -1,22 +1,15 @@
+interface ListItem {
+  id: number;
+  title: string;
+  subTitle: string;
+}
+
 interface ApiResponse {
-    basic: {
-      title: string;
-      price: number;
-      solution: string;
-    },
-    premium: {
-      title: string;
-      price: number;
-      solution: string;
-    };
-  }
-  
-  interface ApiRequest {
-    member_seq: number;
-  }
+  weddingListList: ListItem[];
+}
   
   export default async function listApi(
-      req: ApiRequest) {
+      req: number) {
   
     // const req  = 1;
 
@@ -38,7 +31,7 @@ interface ApiResponse {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
   
-      const data: ApiResponse = await response.json();
+      const data = await response.json();
   
       console.log("Response data: listApi", data);
   
