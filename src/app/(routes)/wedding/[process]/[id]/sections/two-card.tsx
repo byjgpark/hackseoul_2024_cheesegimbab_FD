@@ -1,8 +1,9 @@
 'use client';
 
-import { redirect } from "next/navigation";
+
 import { useEffect } from "react";
-import { chatApi } from "/src/api/testApi.ts";
+
+import { chatApi } from "@/api/testApi";
 
 // interface Props {
 //   params: {
@@ -14,9 +15,14 @@ const TwoCard = (
     // { params: { process } }: Props
 ) => {
 
+    const req = {
+        query: {
+          promptMessage: 'Hello, AI!',  // Example of a query parameter
+        },
+      } as any;
 
     useEffect(() => {
-        chatApi();
+        chatApi(req);
     });
 
     return (
