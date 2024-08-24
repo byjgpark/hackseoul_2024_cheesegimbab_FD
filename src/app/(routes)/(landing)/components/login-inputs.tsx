@@ -4,9 +4,11 @@ import { Input } from "@/components/ui/input";
 import * as React from "react";
 import useLogin from "@/hooks/use-signin";
 import { useRouter } from "next/navigation";
+import { useAuth } from "./authContext";
 
 export const LoginInput = () => {
     const { email, password, handleEmailChange, handlePasswordChange, login } = useLogin();
+    const { setEmail, setPassword, setMemberSeq } = useAuth(); // 수정된 부분
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
     const router = useRouter();
@@ -21,6 +23,10 @@ export const LoginInput = () => {
             .then((response) => {
                 if (response) {
                     console.log("Login successful");
+                    // 로그인 성공 시 상태 업데이트
+                    setEmail(email);
+                    setPassword(password);
+                    setMemberSeq(response.data?.member_seq);
                     router.push("/home");
                 } else {
                     setError("Login failed. Please check your credentials.");

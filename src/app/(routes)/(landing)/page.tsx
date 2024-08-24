@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import {LoginInput} from "./components/login-inputs";
-import {LoginButton} from "./components/login-btns";
 import {AuthProvider} from "./components/authContext";
 
 const Page = async () => {
