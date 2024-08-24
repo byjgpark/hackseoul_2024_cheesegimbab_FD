@@ -10,8 +10,8 @@ export const Header = () => {
 
   const navItems = [
     { name: "Home", path: "/home" },
-    { name: "Map", path: "/map" },
-    { name: "My Page", path: "/my" },
+    { name: "Solution", path: "/solution" },
+    // { name: "My Page", path: "/my" },
   ];
 
   return (

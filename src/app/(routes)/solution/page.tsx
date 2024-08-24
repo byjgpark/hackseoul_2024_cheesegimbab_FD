@@ -22,7 +22,6 @@ const Page = () => {
 
           <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
             <div className="space-y-4">
-              <div>사는 지역</div>
               <ComboboxDemo />
               <LabelInput type="text" placeholder="예산">
                 예산

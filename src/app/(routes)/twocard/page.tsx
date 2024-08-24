@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import TwoCard from "./sections/two-card";
+import TwoCard from "./section/two-card";
 
 interface Props {
   params: {

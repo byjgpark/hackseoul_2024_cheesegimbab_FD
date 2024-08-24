@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 export const LoginButton = () => {
   return (
     <div className="flex justify-center">
-      <Link href="/wedding">
+      <Link href="/home">
         <Button>Login</Button>
       </Link>
     </div>
