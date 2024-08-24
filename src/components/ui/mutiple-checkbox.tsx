@@ -65,7 +65,7 @@ export function CheckboxReactHookFormMultiple() {
     })
     
     console.log(JSON.stringify(data, null, 2));
-    router.push(`wedding/1`);
+    router.push(`/home`);
 
   }
 

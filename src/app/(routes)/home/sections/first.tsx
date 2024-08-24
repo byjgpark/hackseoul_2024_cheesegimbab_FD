@@ -23,7 +23,7 @@ const First = () => {
   ];
 
   const handleClick = () => {
-    router.push(`/wedding/1/2`);
+    router.push(`../../twocard`);
   }
 
   return (
