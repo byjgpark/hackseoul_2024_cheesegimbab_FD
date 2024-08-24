@@ -56,7 +56,7 @@ export function ComboboxDemo() {
               variant="outline"
               role="combobox"
               aria-expanded={open}
-              className="w-[200px] justify-between"
+              className="w-1/2 justify-between"
           >
             {value
                 ? frameworks?.district_list.find((district) => district === value) || "사시는 구"

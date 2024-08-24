@@ -120,7 +120,7 @@ export function CheckboxReactHookFormMultiple() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        {/* <Button type="submit">Submit</Button> */}
       </form>
     </Form>
   )
