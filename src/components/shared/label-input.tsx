@@ -12,7 +12,7 @@ interface LabelInputProps extends HTMLAttributes<HTMLDivElement>{
 
 export const LabelInput = ({className, children, ...props}: LabelInputProps) => {
   return (
-    <div className={cn("grid w-full items-center", className)}>
+    <div className={cn("grid w-1/2 items-center", className)}>
       {/* <Label htmlFor={`${children}`}>{children}</Label> */}
       <Input type={props.type} id="email" placeholder={`${props.placeholder}`} />
     </div>
