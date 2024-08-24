@@ -1,5 +1,8 @@
 "use client"
 
+import { useRouter, useSearchParams } from 'next/navigation'
+// import { useHistory } from "react-router-dom";
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -49,6 +52,9 @@ const FormSchema = z.object({
 })
 
 export function CheckboxReactHookFormMultiple() {
+
+  const router = useRouter()
+  
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -68,8 +74,10 @@ export function CheckboxReactHookFormMultiple() {
         </pre>
       ),
     })
-
+    
     console.log(JSON.stringify(data, null, 2));
+    router.push(`wedding/1`);
+
   }
 
   return (

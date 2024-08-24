@@ -25,7 +25,7 @@ const Page = async ({ params: { process } }: Props) => {
 
   return (
     <main>
-      <div>{renderProcess()}</div>
+      <div className="flex justify-center">{renderProcess()}</div>
     </main>
   );
 };
