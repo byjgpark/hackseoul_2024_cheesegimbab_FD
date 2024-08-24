@@ -23,8 +23,8 @@ function useLogin() {
 
     // Function to perform the login
     const login = async () => {
-        setLoading(true);
-        setError(null);
+        // setLoading(true);
+        // setError(null);
         
         try {
             // Assume you have an API function to handle login, e.g., `loginUser`
@@ -38,8 +38,8 @@ function useLogin() {
             // setLoading(false);
         } catch (err) {
             // Handle error, e.g., show error message to user
-            setError('Login failed. Please check your credentials.');
-            setLoading(false);
+            // setError('Login failed. Please check your credentials.');
+            // setLoading(false);
         }
     };
 
