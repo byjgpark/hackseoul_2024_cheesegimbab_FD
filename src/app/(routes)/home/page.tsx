@@ -14,6 +14,8 @@ const Page = () => {
 
     const { memberSeq } = useAuth(); // AuthContext에서 memberSeq를 가져옵니다.
 
+    
+
     React.useEffect(() => {
         console.log("Member Seq:", memberSeq); // memberSeq의 값이 바뀔 때마다 콘솔에 출력합니다.
     }, [memberSeq]);

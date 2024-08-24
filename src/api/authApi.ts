@@ -10,7 +10,7 @@ interface MemberApiRequest {
 
 export default async function loginUser(req: MemberApiRequest): Promise<ApiResponse | null> {
   try {
-    const url = 'http://localhost:8080/api/v1/member-login';
+    const url = 'http://172.18.8.126:8080/api/v1/member-login';
 
     const options = {
       method: 'POST',
