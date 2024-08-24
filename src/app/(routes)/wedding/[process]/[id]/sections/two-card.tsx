@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { chatApi } from "@/api/testApi";
 
@@ -15,6 +15,9 @@ const TwoCard = (
     // { params: { process } }: Props
 ) => {
 
+    const [aiResponse, setAiResponse] = useState(null);
+    const [error, setError] = useState(null);
+
     const req = {
         query: {
           promptMessage: 'Hello, AI!',  // Example of a query parameter
@@ -22,7 +25,35 @@ const TwoCard = (
       } as any;
 
     useEffect(() => {
-        chatApi(req);
+        // chatApi(req);
+
+
+        const fetchAiResponse = async () => {
+            try {
+              const promptMessage = '결혼식 언제 할까'; // Your prompt message
+              const encodedPromptMessage = encodeURIComponent(promptMessage);
+              const url = `http://172.18.8.126:8080/api/v1/ai-generate?promptMessage=${encodedPromptMessage}`;
+      
+              const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                  'Accept': '*/*',
+                },
+              });
+      
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+      
+              const data = await response.json();
+              console.log("check ", data)
+              setAiResponse(data); // Assuming the response is JSON
+            } catch (error) {
+              setError(error.message);
+            }
+          };
+      
+          fetchAiResponse();
     });
 
     return (

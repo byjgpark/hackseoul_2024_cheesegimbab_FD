@@ -13,29 +13,25 @@ import {toast} from "@/components/ui/use-toast"
 
 const items = [
   {
-    id: "recents",
-    label: "Recents",
+    id: "hall",
+    label: "웨딩홀",
   },
   {
-    id: "home",
-    label: "Home",
+    id: "studio",
+    label: "스튜디오",
   },
   {
-    id: "applications",
-    label: "Applications",
+    id: "dress",
+    label: "드레스",
   },
   {
-    id: "desktop",
-    label: "Desktop",
+    id: "makeup",
+    label: "메이크업",
   },
   {
-    id: "downloads",
-    label: "Downloads",
-  },
-  {
-    id: "documents",
-    label: "Documents",
-  },
+    id: "drowry",
+    label: "예물",
+  }
 ] as const
 
 const FormSchema = z.object({
@@ -55,7 +51,7 @@ export function CheckboxReactHookFormMultiple() {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
 
-    
+
 
     console.log("data", data);
 
@@ -82,9 +78,9 @@ export function CheckboxReactHookFormMultiple() {
           render={() => (
             <FormItem>
               <div className="mb-4">
-                <FormLabel className="text-base">Sidebar</FormLabel>
+                <FormLabel className="text-base">선택 사항</FormLabel>
                 <FormDescription>
-                  Select the items you want to display in the sidebar.
+                  결혼 준비 하는데 필요한 항목을 선택해주세요.
                 </FormDescription>
               </div>
               {items.map((item) => (

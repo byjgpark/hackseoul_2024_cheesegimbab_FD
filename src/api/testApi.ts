@@ -52,7 +52,7 @@ export async function chatApi(req: NextApiRequest): Promise<ApiResponse | { erro
   }
 
   try {
-    const url = new URL('http://172.18.11.104:8080/api/v1/ai-generate');
+    const url = new URL('http://172.18.8.126:8080/api/v1/ai-generate');
     url.searchParams.append('promptMessage', promptMessage);
 
     const response = await fetch(url.toString());
@@ -64,7 +64,7 @@ export async function chatApi(req: NextApiRequest): Promise<ApiResponse | { erro
     const data: ApiResponse = await response.json();
     console.log("checking error :",data)
     // Return the data instead of sending it directly
-    // return data;
+    return data;
   } catch (error) {
     console.error('Error fetching AI response:', error);
     // Return an error object instead of sending a response
