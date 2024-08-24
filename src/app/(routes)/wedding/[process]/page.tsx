@@ -20,7 +20,7 @@ const Page = async ({ params: { process } }: Props) => {
 
     if (parsedProcess === 1) return <First></First>
     if (parsedProcess === 2) return <Second></Second>
-    if (parsedProcess === 3) return <Third></Third>
+    // if (parsedProcess === 3) return <Third></Third>
   };
 
   return (
