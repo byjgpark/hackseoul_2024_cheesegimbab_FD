@@ -1,10 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
-import chatApi from "@/api/testApi";
+import {useEffect, useState} from "react";
+import chatApi from "@/api/twoCardApi";
 import BackButton from "@/components/ui/back-button"; // Ensure chatApi is exported as default in testApi
 
-const TwoCard = () => {
+interface SolutionMessage {
+    basic: {
+        title: string;
+        price: number;
+        solution: string;
+    },
+    premium: {
+        title: string;
+        price: number;
+        solution: string;
+    };
+}
+
+export function TwoCard() {
+
+    const[solutionMessage, setSolutionMessage] = useState<SolutionMessage>();
+
     const req = {
         query: {
             promptMessage: 'Hello, AI!',  // Example of a query parameter
@@ -14,7 +30,15 @@ const TwoCard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const res = {
+                    status: (statusCode: number) => ({
+                        json: (data: any) => data,
+                    }),
+                };
                 const response = await chatApi(req);
+
+                setSolutionMessage(response);
+
                 console.log("API response:", response);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -22,7 +46,7 @@ const TwoCard = () => {
         };
 
         fetchData();
-    }, []);  // Empty dependency array ensures this runs only once on mount
+    }, []);
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col items-center py-8">
@@ -34,24 +58,12 @@ const TwoCard = () => {
                     {/* Basic Plan */}
                     <div className="w-72 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white flex flex-col justify-between">
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-gray-800">Basic</h2>
-                            <p className="text-4xl font-bold mb-6 text-gray-900">$6.99</p>
+                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.basic?.title}</h2>
+                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.basic?.price}</p>
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Reprehenderit in voluptate velit.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Duis aute irure.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-gray-500">&#10007;</span>
-                                    <span className="ml-2 text-gray-500">Exercitation ullamco laboris.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-gray-500">&#10007;</span>
-                                    <span className="ml-2 text-gray-500">Magna aliqua.</span>
+                                    <span className="ml-2 text-gray-700">{solutionMessage?.basic?.solution}</span>
                                 </li>
                             </ul>
                         </div>
@@ -63,36 +75,12 @@ const TwoCard = () => {
                     {/* Premium Plan */}
                     <div className="w-72 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white flex flex-col justify-between">
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-gray-800">Premium</h2>
-                            <p className="text-4xl font-bold mb-6 text-gray-900">$9.99</p>
+                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.premium?.title}</h2>
+                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.premium?.price}</p>
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Reprehenderit in voluptate velit.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Duis aute irure.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Exercitation ullamco laboris.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Magna aliqua.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">Reprehenderit in voluptate velit.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-gray-500">&#10007;</span>
-                                    <span className="ml-2 text-gray-500">Sed do eiusmod tempor cididunt.</span>
-                                </li>
-                                <li className="flex items-center">
-                                    <span className="text-gray-500">&#10007;</span>
-                                    <span className="ml-2 text-gray-500">Lorem ipsum dolor sit amet.</span>
+                                    <span className="ml-2 text-gray-700">{solutionMessage?.premium?.solution}</span>
                                 </li>
                             </ul>
                         </div>
