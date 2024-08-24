@@ -1,6 +1,5 @@
 import {Header} from "@/components/layout/header";
 import Script from 'next/script'
-// import { useRouter } from 'next/router';
 import {Inter} from "next/font/google";
 import {cn} from "@/lib/utils";
 
