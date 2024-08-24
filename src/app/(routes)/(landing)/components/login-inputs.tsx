@@ -12,8 +12,6 @@ export const LoginInput = () => {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        // Add login logic here
-        // router.push("/home");
     };
 
     return (
