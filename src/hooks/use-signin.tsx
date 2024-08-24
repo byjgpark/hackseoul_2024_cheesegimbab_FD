@@ -1,61 +1,44 @@
 import { useState } from 'react';
 import loginUser from '@/api/authApi';
-// @/api/testApi
+import { useAuth } from "../app/(routes)/(landing)/components/authContext";
 
-// @/api/testApi
+interface MemberApiRequest {
+    member_id: string;
+    member_pw: string;
+}
+
+interface ApiResponse {
+    data: any;
+}
 
 function useLogin() {
-    // State to hold email, password, and other user inputs
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { email, password } = useAuth();
 
-    console.log("check email in useLogin", email, "password", password, "from useLogin");
-    
-    // State to manage loading and error status
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
-    // Function to handle email change
-    const handleEmailChange = (input: string) => {
-        // console.log("check input", input);
-        setEmail(input);
-    };
+    const login = async (email: string, password: string): Promise<ApiResponse | null> => {
+        setLoading(true);
+        setError(null);
 
-    // Function to handle password change
-    const handlePasswordChange = (input: string) => {
-        // console.log("check input", input);
-        setPassword(input);
-    };
+        const request: MemberApiRequest = {
+            member_id: email,
+            member_pw: password,
+        };
 
-    // Function to perform the login
-    const login = async (email: string, password: string) => {
-        // setLoading(true);
-        // setError(null);
-
-        
-        
         try {
-            // Assume you have an API function to handle login, e.g., `loginUser`
-            // const response = await loginUser({ email, password });
-
-
-            console.log("123123 check email", email, "password", password);
-            
-            // console.log("API response:", response);
-            const response = await loginUser({ "member_id": email, "member_pw": password });
+            const response = await loginUser(request);
 
             console.log("API response:", response);
 
-            console.log("check email", email, "password", password);
-            
-            // Handle success, e.g., save token, redirect, etc.
-            // console.log("Login successful", response);
-            
-            // setLoading(false);
+            // 성공 처리
+            setLoading(false);
+            return response;
         } catch (err) {
-            // Handle error, e.g., show error message to user
-            // setError('Login failed. Please check your credentials.');
-            // setLoading(false);
+            console.error('Login failed:', err);
+            setError('Login failed. Please check your credentials.');
+            setLoading(false);
+            return null;
         }
     };
 
@@ -64,8 +47,6 @@ function useLogin() {
         password,
         loading,
         error,
-        handleEmailChange,
-        handlePasswordChange,
         login,
     };
 }

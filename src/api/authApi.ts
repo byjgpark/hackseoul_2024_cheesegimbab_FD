@@ -1,43 +1,22 @@
-
-
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 interface ApiResponse {
-  data: any;  // Replace 'any' with the actual response structure if known
+  data: any;
 }
 
-interface apiRequest {
-  query: {
-  "member_id": string;
-  "member_pw": string;
-  }
+interface MemberApiRequest {
+  member_id: string;
+  member_pw: string;
 }
 
-export default async function loginUser(req: apiRequest) {
-  // const { promptMessage } = req.query;
-
-  console.log("check hello123", req.query);
-
-  // console.timeLog("check", promptMessage);
-
-  // // Validate promptMessage
-  // if (typeof promptMessage !== 'string') {
-  //   res.status(400).json({ error: 'Invalid prompt message' });
-  //   return;
-  // }
-
-
-
+export default async function loginUser(req: MemberApiRequest): Promise<ApiResponse | null> {
   try {
-    const url = 'http://localhost:8080/api/v1/member-login'; // Your API endpoint
+    const url = 'http://localhost:8080/api/v1/member-login';
 
-    // Create the POST request options
     const options = {
-      method: 'POST', // Use POST method
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // Set the content type to JSON
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ req }), // Convert the body to a JSON string
+      body: JSON.stringify(req),
     };
 
     const response = await fetch(url, options);
@@ -50,10 +29,10 @@ export default async function loginUser(req: apiRequest) {
 
     console.log("Response data:", data);
 
-    // Send the data as a response
-    res.status(200).json(data);
+    return data;
+
   } catch (error) {
     console.error('Error fetching AI response:', error);
-    res.status(500).json({ error: 'Failed to fetch AI response' });
+    return null;  // 오류가 발생하면 null 반환
   }
 }
