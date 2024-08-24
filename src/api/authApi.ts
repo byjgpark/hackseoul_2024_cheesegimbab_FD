@@ -7,17 +7,16 @@ interface ApiResponse {
 }
 
 interface apiRequest {
-  req: {
+  query: {
   "member_id": string;
   "member_pw": string;
   }
-  
 }
 
-export default async function loginUser(req: apiRequest, res: NextApiResponse): Promise<void> {
+export default async function loginUser(req: apiRequest) {
   // const { promptMessage } = req.query;
 
-  // console.log("check hello123");
+  console.log("check hello123", req.query);
 
   // console.timeLog("check", promptMessage);
 
@@ -26,6 +25,8 @@ export default async function loginUser(req: apiRequest, res: NextApiResponse): 
   //   res.status(400).json({ error: 'Invalid prompt message' });
   //   return;
   // }
+
+
 
   try {
     const url = 'http://localhost:8080/api/v1/member-login'; // Your API endpoint

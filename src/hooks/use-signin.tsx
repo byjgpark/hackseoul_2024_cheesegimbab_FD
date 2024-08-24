@@ -8,6 +8,8 @@ function useLogin() {
     // State to hold email, password, and other user inputs
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    console.log("check email in useLogin", email, "password", password, "from useLogin");
     
     // State to manage loading and error status
     const [loading, setLoading] = useState(false);
@@ -26,16 +28,18 @@ function useLogin() {
     };
 
     // Function to perform the login
-    const login = async () => {
+    const login = async (email: string, password: string) => {
         // setLoading(true);
         // setError(null);
+
+        
         
         try {
             // Assume you have an API function to handle login, e.g., `loginUser`
             // const response = await loginUser({ email, password });
 
 
-            console.log("check email", email, "password", password);
+            console.log("123123 check email", email, "password", password);
             
             // console.log("API response:", response);
             const response = await loginUser({ "member_id": email, "member_pw": password });

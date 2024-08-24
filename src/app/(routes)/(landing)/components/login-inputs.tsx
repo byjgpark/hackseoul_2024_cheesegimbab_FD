@@ -13,7 +13,7 @@ import useLogin  from "@/hooks/use-signin.tsx";
 
     const { email, password, handleEmailChange, handlePasswordChange } = useLogin();
 
-    console.log("check password", password, "email", email);
+    // console.log("check password", password, "email", email);
 
     // const [username, setUsername] = useState("");
     // const [password, setPassword] = useState("");
@@ -50,7 +50,7 @@ import useLogin  from "@/hooks/use-signin.tsx";
           value={password}
           onChange={(e) => handlePasswordChange(e.target.value)}
         />
-        <button type="submit">Sign In</button>
+        {/* <button type="submit">Sign In</button> */}
       </form>
     );
   };
