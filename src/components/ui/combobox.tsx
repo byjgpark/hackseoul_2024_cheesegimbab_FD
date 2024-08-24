@@ -21,28 +21,22 @@ import { useEffect, useState } from "react";
 import addressApi from "@/api/addressApi";
 
 interface Framework {
-  value: string;
-  label: string;
+  district_list: string[];
 }
 
 export function ComboboxDemo() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<string>("");
-  const [frameworks, setFrameworks] = useState<Framework[]>([]); // State to store API response data
+  const [frameworks, setFrameworks] = useState<Framework | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = {
-          status: (statusCode: number) => ({
-            json: (data: any) => data,
-          }),
-        };
+        const response = await addressApi(); // Use the imported function
 
-        const response = await addressApi({}, res);
         console.log("API response:", response);
 
-        if (Array.isArray(response)) {
+        if (response && response.district_list) {
           setFrameworks(response);
         } else {
           console.error("Unexpected response format:", response);
@@ -65,7 +59,7 @@ export function ComboboxDemo() {
               className="w-[200px] justify-between"
           >
             {value
-                ? frameworks.find((framework) => framework.value === value)?.label
+                ? frameworks?.district_list.find((district) => district === value) || "사시는 구"
                 : "사시는 구"}
             <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
@@ -74,24 +68,24 @@ export function ComboboxDemo() {
           <Command>
             <CommandInput placeholder="사시는 구" className="h-9" />
             <CommandList>
-              {frameworks.length === 0 ? (
+              {frameworks?.district_list.length === 0 ? (
                   <CommandEmpty>No options found.</CommandEmpty>
               ) : (
                   <CommandGroup>
-                    {frameworks.map((framework) => (
+                    {frameworks?.district_list.map((district) => (
                         <CommandItem
-                            key={framework.value}
-                            value={framework.value}
+                            key={district}
+                            value={district}
                             onSelect={(currentValue) => {
                               setValue(currentValue === value ? "" : currentValue);
                               setOpen(false);
                             }}
                         >
-                          {framework.label}
+                          {district}
                           <CheckIcon
                               className={cn(
                                   "ml-auto h-4 w-4",
-                                  value === framework.value ? "opacity-100" : "opacity-0"
+                                  value === district ? "opacity-100" : "opacity-0"
                               )}
                           />
                         </CommandItem>

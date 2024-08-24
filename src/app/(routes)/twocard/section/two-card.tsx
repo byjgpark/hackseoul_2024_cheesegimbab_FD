@@ -58,12 +58,12 @@ export function TwoCard() {
                     {/* Basic Plan */}
                     <div className="w-72 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white flex flex-col justify-between">
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.basic.title}</h2>
-                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.basic.price}</p>
+                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.basic?.title}</h2>
+                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.basic?.price}</p>
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">{solutionMessage?.basic.solution}</span>
+                                    <span className="ml-2 text-gray-700">{solutionMessage?.basic?.solution}</span>
                                 </li>
                             </ul>
                         </div>
@@ -75,12 +75,12 @@ export function TwoCard() {
                     {/* Premium Plan */}
                     <div className="w-72 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow bg-white flex flex-col justify-between">
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.premium.title}</h2>
-                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.premium.price}</p>
+                            <h2 className="text-xl font-bold mb-4 text-gray-800">{solutionMessage?.premium?.title}</h2>
+                            <p className="text-4xl font-bold mb-6 text-gray-900">{solutionMessage?.premium?.price}</p>
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700">{solutionMessage?.premium.solution}</span>
+                                    <span className="ml-2 text-gray-700">{solutionMessage?.premium?.solution}</span>
                                 </li>
                             </ul>
                         </div>
