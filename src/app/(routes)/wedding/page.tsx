@@ -1,54 +1,48 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import * as React from "react";
-import Link from "next/link";
-import DropDown from "@/components/ui/dropdown";
 import { LabelInput } from "@/components/shared/label-input";
-import { Button } from "@/components/ui/button";
 import { CheckboxReactHookFormMultiple } from "@/components/ui/mutiple-checkbox";
 import { ComboboxDemo } from "@/components/ui/combobox";
 import BackButton from "@/components/ui/back-button";
 
 const Page = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  //   redirect('/wedding/1')
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <main>
-      <div className="flex justify-center">
-        <BackButton/>
-        {/* <div className="grid grid-cols-2 gap-1">
-        <DropDown></DropDown>  
-        <LabelInput type="text" placeholder="Buget"></LabelInput>
-        <input type="checkbox" placeholder="no"></input>
-        <DropDown></DropDown>  
-        <LabelInput> </LabelInput>
-        <LabelInput> </LabelInput>
-        <LabelInput> </LabelInput>        
-        </div>         */}
+      <main className="p-4 bg-gray-50 min-h-screen">
+        <div className="max-w-lg mx-auto">
+          <div className="mb-6">
+            <BackButton />
+          </div>
 
-        <div className="grid grid-cols-1 gap-1">
-
-          <div className="flex flex-row w-full h-full">
-            <div className="flex-1">
-              <ComboboxDemo/>
-            </div>
-            <div className="flex-1">
+          <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
+            <div className="space-y-4">
+              <ComboboxDemo />
               <LabelInput type="text" placeholder="예산">
                 예산
               </LabelInput>
             </div>
-          </div>
-          <CheckboxReactHookFormMultiple></CheckboxReactHookFormMultiple>
 
+            <div>
+              <CheckboxReactHookFormMultiple />
+            </div>
+
+            <div className="text-right">
+              <button
+                  onClick={toggleDropdown}
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              >
+                제출
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
   );
 };
 
