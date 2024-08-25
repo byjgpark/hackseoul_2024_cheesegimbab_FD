@@ -1,5 +1,5 @@
 # Project Description
-The primary goal of the program is to assist couples in making informed decisions about wedding expenses by comparing various wedding services, venues, and other related costs. This can help them plan a more cost-effective wedding that aligns with their budget
+This program leverages AI to compare wedding costs, addressing the societal issue of high wedding expenses. The goal is to minimize these costs by helping users find the most affordable options. In the future, as fixed pricing policies are implemented, the program will be further developed to calculate the optimal wedding costs.
 
 # Selected hackathon track
 Social Responsibility 
