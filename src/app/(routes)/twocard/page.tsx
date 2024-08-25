@@ -15,7 +15,7 @@ const Page = async ({ params: { process } }: Props) => {
     <main>
       {/* <div className="flex justify-center">{renderProcess()}</div> */}
       {/* <div className="flex justify-center">this is selected page</div> */}
-      <TwoCard></TwoCard>
+      <TwoCard id={process} />
     </main>
   );
 };
