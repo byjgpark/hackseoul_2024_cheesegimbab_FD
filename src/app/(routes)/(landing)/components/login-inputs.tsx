@@ -30,7 +30,7 @@ export const LoginInput = ({ children }: LoginInputProps) => {
                     setEmail(email);
                     setPassword(password);
                     setMemberSeq(response?.member_seq.toString());
-                    router.push("/home");
+                    router.push("/solution");
                 } else {
                     setError("Login failed. Please check your credentials.");
                 }

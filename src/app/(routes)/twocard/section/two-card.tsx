@@ -116,15 +116,26 @@ useEffect(() => {
                             <ul className="mb-6 space-y-2">
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="ml-2 text-gray-700">예물 :</span>
                                 </li>
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="ml-2 text-gray-700">예물장소 :</span>
+                                </li><li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">예물가격 :</span>
                                 </li>
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="ml-2 text-gray-700">드레스 :</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">드레스장소 :</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">드레스가격 :</span>
                                 </li>
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
@@ -140,13 +151,17 @@ useEffect(() => {
                                 </li>
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="ml-2 text-gray-700">메이크업 :</span>
                                 </li>
                                 <li className="flex items-center">
                                     <span className="text-blue-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="ml-2 text-gray-700">메이크업장소 :</span>
+                                    
                                 </li>
-                             
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">메이크업가격 :</span>
+                                </li>
                             </ul>
                         </div>
                         <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mt-auto">
@@ -160,37 +175,53 @@ useEffect(() => {
                             {/* <h2 className="text-xl font-bold mb-4 text-gray-800">Plan</h2> */}
                             <p className="text-4xl font-bold mb-6 text-gray-900">Premium</p>
                             <ul className="mb-6 space-y-2">
-                                <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                            <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">예물 :</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">예물장소 :</span>
+                                </li><li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">예물가격 :</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">드레스 :</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">드레스장소 :</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">드레스가격 :</span>
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
                                     <span className="ml-2 text-gray-700">식장 : {solutionMessage.premium.hall_name}</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="text-blue-500">&#10003;</span>
                                     <span className="ml-2 text-gray-700">식장장소 : {solutionMessage.premium.hall_address}</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
+                                    <span className="text-blue-500">&#10003;</span>
                                     <span className="ml-2 text-gray-700">식장가격 : {solutionMessage.premium.hall_price}</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">메이크업 :</span>
                                 </li>
                                 <li className="flex items-center">
-                                    <span className="text-green-500">&#10003;</span>
-                                    <span className="ml-2 text-gray-700"></span>
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">메이크업장소 :</span>
+                                    
+                                </li>
+                                <li className="flex items-center">
+                                    <span className="text-blue-500">&#10003;</span>
+                                    <span className="ml-2 text-gray-700">메이크업가격 :</span>
                                 </li>
                                 
                             </ul>

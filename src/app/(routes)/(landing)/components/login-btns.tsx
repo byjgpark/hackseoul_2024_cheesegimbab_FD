@@ -13,7 +13,7 @@ export const LoginButton = () => {
             .then((response) => {
                 if (response) {
                     // 로그인 성공 시, 홈 페이지로 이동
-                    router.push("/home");
+                    router.push("/solution");
                 }
             })
             .catch((err) => {
