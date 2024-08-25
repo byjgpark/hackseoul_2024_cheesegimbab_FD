@@ -23,8 +23,7 @@ interface ApiResponse {
   
       const url = new URL('http://172.18.2.221:8080/api/v1/wedding-list');
   
-      url.searchParams.append('member_seq', 1);
-  
+
       const response = await fetch(url);
   
       if (!response.ok) {
