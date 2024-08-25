@@ -7,6 +7,7 @@ Social Responsibility
 # Frontend Tech Stack: 
 - TypeScript
 - Next.js
+- Tailwind
 
 # Getting Started
 
