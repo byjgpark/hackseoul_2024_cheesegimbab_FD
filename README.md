@@ -17,4 +17,3 @@ docker build -t wedding_fd .
 
 docker run -p 3000:3000 wedding_fd
 
-# 
